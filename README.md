@@ -45,7 +45,7 @@ Effect of batch size with CPU clocked at 1.6 GHz
 
 [TODO: measure cache misses for other languages, similar to the cache measurement for the C version in [the paper](https://www.net.in.tum.de/fileadmin/bibtex/publications/papers/ixy_paper_draft2.pdf)]
 
-*Notes on multi-core:* Some languages implement multi-threading for ixy, but some can't by design (e.g. GIL in Python or OCaml). However, this isn't a real problem because multi-threading within one process isn't really necessary.
+*Notes on multi-core:* Some languages implement multi-threading for ixy, but some can't or are limited by the language's design (e.g., the GIL in Python and OCaml). However, this isn't a real problem because multi-threading within one process isn't really necessary.
 Network cards can split the traffic at the hardware level (via a feature called RSS), the traffic can be distributed to independent different processes.
 For example, [Snabb](https://github.com/snabbco/snabb) works like this and many DPDK applications use multiple threads that do not communicate.
 
