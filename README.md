@@ -11,13 +11,16 @@ Some languages require a few lines of C stubs for features not offered by the la
 
 | Language | Code                                                    | Status   | Full evaluation | 
 |----------|---------------------------------------------------------|----------|-----------------|
-| C        | [ixy.c](https://github.com/emmericp/ixy)                | Finished | [Paper (draft)](https://www.net.in.tum.de/fileadmin/bibtex/publications/papers/ixy_paper_draft2.pdf) |
+| C        | [ixy.c](https://github.com/emmericp/ixy)*                | Finished | [Paper (draft)](https://www.net.in.tum.de/fileadmin/bibtex/publications/papers/ixy_paper_draft2.pdf) |
 | Rust     | [ixy.rs](https://github.com/ixy-languages/ixy.rs)       | Finished | [Thesis](https://www.net.in.tum.de/fileadmin/bibtex/publications/theses/2018-ixy-rust.pdf) |
 | go       | [ixy.go](https://github.com/ixy-languages/ixy.go)       | Finished | [Thesis](https://www.net.in.tum.de/fileadmin/bibtex/publications/theses/2018-ixy-go.pdf)
 | C#       | [ixy.cs](https://github.com/ixy-languages/ixy.cs)       | Finished | [Thesis](https://www.net.in.tum.de/fileadmin/bibtex/publications/theses/2018-ixy-c-sharp.pdf)
 | OCaml    | [ixy.ml](https://github.com/ixy-languages/ixy.ml)       | WIP      | WIP             |
 | Haskell  | [ixy.hs](https://github.com/ixy-languages/ixy.hs)       | WIP      | WIP             |
 | Swift    | [ixy.swift](https://github.com/ixy-languages/ixy.swift) | WIP      | WIP             |
+| Python   | [ixy.py](https://github.com/ixy-languages/ixy.py)*      | WIP      | WIP             |
+
+*) also features a VirtIO driver for easy testing in VMs with Vagrant
 
 
 This repository here is only a short summary of the project, check out the repositories and full evaluations linked above for all the gory details.
