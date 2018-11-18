@@ -17,7 +17,7 @@ Some languages require a few lines of C stubs for features not offered by the la
 | C#       | [ixy.cs](https://github.com/ixy-languages/ixy.cs)       | Finished | [Thesis](https://www.net.in.tum.de/fileadmin/bibtex/publications/theses/2018-ixy-c-sharp.pdf)
 | OCaml    | [ixy.ml](https://github.com/ixy-languages/ixy.ml)       | WIP      | WIP             |
 | Haskell  | [ixy.hs](https://github.com/ixy-languages/ixy.hs)       | WIP      | WIP             |
-| Swift    | [ixy.swift](https://github.com/ixy-languages/ixy.swift) | WIP      | WIP             |
+| Swift    | [ixy.swift](https://github.com/ixy-languages/ixy.swift) | WIP      | [Performance results](https://github.com/ixy-languages/ixy.swift/tree/master/performance)             |
 | Python   | [ixy.py](https://github.com/ixy-languages/ixy.py)*      | WIP      | WIP             |
 
 *) also features a VirtIO driver for easy testing in VMs with Vagrant
