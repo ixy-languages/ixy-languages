@@ -15,9 +15,9 @@ Some languages require a few lines of C stubs for features not offered by the la
 | Rust     | [ixy.rs](https://github.com/ixy-languages/ixy.rs)       | Finished | [Thesis](https://www.net.in.tum.de/fileadmin/bibtex/publications/theses/2018-ixy-rust.pdf) |
 | go       | [ixy.go](https://github.com/ixy-languages/ixy.go)       | Finished | [Thesis](https://www.net.in.tum.de/fileadmin/bibtex/publications/theses/2018-ixy-go.pdf)
 | C#       | [ixy.cs](https://github.com/ixy-languages/ixy.cs)       | Finished | [Thesis](https://www.net.in.tum.de/fileadmin/bibtex/publications/theses/2018-ixy-c-sharp.pdf)
-| OCaml    | [ixy.ml](https://github.com/ixy-languages/ixy.ml)       | WIP      | WIP             |
+| Swift    | [ixy.swift](https://github.com/ixy-languages/ixy.swift) | Finished      | [Documentation](https://github.com/ixy-languages/ixy.swift/blob/master/README.md)             |
+| OCaml    | [ixy.ml](https://github.com/ixy-languages/ixy.ml)       | WIP      | [Documentation](https://github.com/ixy-languages/ixy.ml/tree/master/doc)             |
 | Haskell  | [ixy.hs](https://github.com/ixy-languages/ixy.hs)       | WIP      | WIP             |
-| Swift    | [ixy.swift](https://github.com/ixy-languages/ixy.swift) | WIP      | [Performance results](https://github.com/ixy-languages/ixy.swift/tree/master/performance)             |
 | Python   | [ixy.py](https://github.com/ixy-languages/ixy.py)*      | WIP      | WIP             |
 
 *) also features a VirtIO driver for easy testing in VMs with Vagrant
@@ -57,7 +57,7 @@ For example, [Snabb](https://github.com/snabbco/snabb) works like this and many 
 Latency
 =======
 
-Average and median latency is the same irregardless of the programming language, the [evaluation script](https://github.com/ixy-languages/benchmark-scripts) can sample the latency of up to 1000 packets per second with hardware timestamping (precision: 12.8 nanoseconds).
+Average and median latency is the same regardless of the programming language, the [evaluation script](https://github.com/ixy-languages/benchmark-scripts) can sample the latency of up to 1000 packets per second with hardware timestamping (precision: 12.8 nanoseconds).
 This yields somewhat interesting results depending on queue sizes and NUMA configuration, see the [ixy paper](https://www.net.in.tum.de/fileadmin/bibtex/publications/papers/ixy_paper_draft2.pdf) for an evaluation.
 
 Latency spikes induced by languages feature a garbage collector and/or a JIT compiler might not be caught by the test setup above.
