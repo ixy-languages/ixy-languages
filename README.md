@@ -16,9 +16,9 @@ Some languages require a few lines of C stubs for features not offered by the la
 | go       | [ixy.go](https://github.com/ixy-languages/ixy.go)       | Finished | [Thesis](https://www.net.in.tum.de/fileadmin/bibtex/publications/theses/2018-ixy-go.pdf)
 | C#       | [ixy.cs](https://github.com/ixy-languages/ixy.cs)       | Finished | [Thesis](https://www.net.in.tum.de/fileadmin/bibtex/publications/theses/2018-ixy-c-sharp.pdf)
 | Swift    | [ixy.swift](https://github.com/ixy-languages/ixy.swift) | Finished      | [Documentation](https://github.com/ixy-languages/ixy.swift/blob/master/README.md)             |
-| OCaml    | [ixy.ml](https://github.com/ixy-languages/ixy.ml)       | WIP      | [Documentation](https://github.com/ixy-languages/ixy.ml/tree/master/doc)             |
-| Haskell  | [ixy.hs](https://github.com/ixy-languages/ixy.hs)       | WIP      | WIP             |
-| Python   | [ixy.py](https://github.com/ixy-languages/ixy.py)*      | WIP      | WIP             |
+| OCaml    | [ixy.ml](https://github.com/ixy-languages/ixy.ml)       | Working but unoptimized      | [Documentation](https://github.com/ixy-languages/ixy.ml/blob/master/README.md)             |
+| Haskell  | [ixy.hs](https://github.com/ixy-languages/ixy.hs)       | Working but unoptimized      | WIP             |
+| Python   | [ixy.py](https://github.com/ixy-languages/ixy.py)*      | 80% finished      | WIP             |
 
 *) also features a VirtIO driver for easy testing in VMs with Vagrant
 
@@ -50,15 +50,21 @@ Effect of batch size with CPU clocked at 1.6 GHz
 
 *Notes on multi-core:* Some languages implement multi-threading for ixy, but some can't or are limited by the language's design (e.g., the GIL in Python and OCaml). However, this isn't a real problem because multi-threading within one process isn't really necessary.
 Network cards can split the traffic at the hardware level (via a feature called RSS), the traffic can be distributed to independent different processes.
-For example, [Snabb](https://github.com/snabbco/snabb) works like this and many DPDK applications use multiple threads that do not communicate.
+For example, [Snabb](https://github.com/snabbco/snabb) works like this and many DPDK applications use multiple threads that do not communicate (shared nothing architecture).
 
 
 
 Latency
 =======
 
-Average and median latency is the same regardless of the programming language, the [evaluation script](https://github.com/ixy-languages/benchmark-scripts) can sample the latency of up to 1000 packets per second with hardware timestamping (precision: 12.8 nanoseconds).
+Average and median latency is the same regardless of the programming language as latency is dominated by buffering times, the [evaluation script](https://github.com/ixy-languages/benchmark-scripts) can sample the latency of up to 1000 packets per second with hardware timestamping (precision: 12.8 nanoseconds).
 This yields somewhat interesting results depending on queue sizes and NUMA configuration, see the [ixy paper](https://www.net.in.tum.de/fileadmin/bibtex/publications/papers/ixy_paper_draft2.pdf) for an evaluation.
 
 Latency spikes induced by languages feature a garbage collector and/or a JIT compiler might not be caught by the test setup above.
-We are working on an additional latency measurement setup based on fiber taps with our [MoonSniff framework](https://github.com/AP-Frank/MoonGen/tree/moonsniff). This allows us to timestamp every single packet and detect JIT warmup phases and individual gc cycles.
+We have a second test setup to catch this: we also capture *all* packets before and after the device under test with fiber taps and use the  [MoonSniff framework](https://github.com/AP-Frank/MoonGen/tree/moonsniff) to acquire all hardware timestamps for all packets.
+
+Running this for Rust, Go, and C# at 18 Mpps yields the following latency distribution:
+
+![Latency](img/latency.png)
+
+This graph focuses on the tail latency, note the logarithmic scaling on the x axis.
