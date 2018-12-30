@@ -4,6 +4,8 @@ Overview
 Ixy is an educational user space network driver for the Intel ixgbe family of 10 Gbit/s NICs (82599ES aka X520, X540, X550, ...).
 Its goal is to show that writing a super-fast network driver can be surprisingly simple, check out the [full description in the main repository](https://github.com/emmericp/ixy).
 
+[Check out our talk at 35C3](https://media.ccc.de/v/35c3-9670-safe_and_secure_drivers_in_high-level_languages) (Video, 60 minutes)
+
 Ixy was originally written in C as lowest common denominator of system programming languages, but it is possible to write user space drivers in any programming language.
 
 Yes, these drivers are really a full implementation of an actual PCIe driver in these languages; they handle everything from setting up DMA memory to receiving and transmitting packets in a high-level language. You don't need to write any kernel code to build drivers!
