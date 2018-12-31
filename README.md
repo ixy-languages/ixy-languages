@@ -21,6 +21,7 @@ Some languages require a few lines of C stubs for features not offered by the la
 | OCaml    | [ixy.ml](https://github.com/ixy-languages/ixy.ml)       | Working but unoptimized      | [Documentation](https://github.com/ixy-languages/ixy.ml/blob/master/README.md)             |
 | Haskell  | [ixy.hs](https://github.com/ixy-languages/ixy.hs)       | Working but unoptimized      | WIP             |
 | Python   | [ixy.py](https://github.com/ixy-languages/ixy.py)*      | 80% finished      | WIP             |
+| Java   | [ixy.java](https://github.com/ixy-languages/ixy.java)      | ?      | WIP             |
 
 *) also features a VirtIO driver for easy testing in VMs with Vagrant
 
