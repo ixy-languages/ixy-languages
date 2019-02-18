@@ -17,9 +17,9 @@ Some languages require a few lines of C stubs for features not offered by the la
 | Rust     | [ixy.rs](https://github.com/ixy-languages/ixy.rs)       | Finished | [Thesis](https://www.net.in.tum.de/fileadmin/bibtex/publications/theses/2018-ixy-rust.pdf) |
 | go       | [ixy.go](https://github.com/ixy-languages/ixy.go)       | Finished | [Thesis](https://www.net.in.tum.de/fileadmin/bibtex/publications/theses/2018-ixy-go.pdf)
 | C#       | [ixy.cs](https://github.com/ixy-languages/ixy.cs)       | Finished | [Thesis](https://www.net.in.tum.de/fileadmin/bibtex/publications/theses/2018-ixy-c-sharp.pdf)
+| Haskell  | [ixy.hs](https://github.com/ixy-languages/ixy.hs)       | Finished      | [Thesis](https://www.net.in.tum.de/fileadmin/bibtex/publications/theses/2019-ixy-haskell.pdf)             |
 | Swift    | [ixy.swift](https://github.com/ixy-languages/ixy.swift) | Finished      | [Documentation](https://github.com/ixy-languages/ixy.swift/blob/master/README.md)             |
 | OCaml    | [ixy.ml](https://github.com/ixy-languages/ixy.ml)       | Finished      | [Documentation](https://github.com/ixy-languages/ixy.ml/blob/master/README.md)             |
-| Haskell  | [ixy.hs](https://github.com/ixy-languages/ixy.hs)       | Finished      | WIP             |
 | Python   | [ixy.py](https://github.com/ixy-languages/ixy.py)*      | Working but unoptimized      | WIP             |
 
 *) also features a VirtIO driver for easy testing in VMs with Vagrant
