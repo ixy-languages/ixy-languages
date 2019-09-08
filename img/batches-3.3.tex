@@ -1,0 +1,151 @@
+\documentclass[convert]{standalone}
+ 
+\usepackage{tumcolors}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=newest}
+\pgfplotsset{grid style={dotted}}
+\usetikzlibrary{plotmarks}
+\usetikzlibrary{backgrounds} 
+
+\usepackage{sansmath} 
+\sansmath
+\renewcommand{\familydefault}{\sfdefault}
+
+\begin{document}
+\begin{tikzpicture}[background rectangle/.style={fill=white},show background rectangle]
+
+\begin{axis}[
+	title={Bidirectional forwarding performance at 3.3\,GHz},
+	title style={yshift=4.5ex},
+	width=10.2cm,
+	height=6.4cm,
+	xmode=log,
+	log basis x={2},
+	log ticks with fixed point,
+	xmin=0.75, xmax=384,
+	ymin=0, ymax=30,
+	grid=major,
+	xtick={1, 2, 4, 8, 16, 32, 64, 128, 256},
+	ytick={0,10, 20, 30},
+	ylabel=Packet rate {[}Mpps{]},
+	xlabel={Batch size},
+	legend style={font=\fontsize{7}{8}\selectfont},
+	every axis legend/.append style={nodes={right}},
+	legend entries={C, Rust, Go, C\#, Java, OCaml, Haskell, Swift, JavaScript, Python},
+	legend columns=5,
+	legend style={at={(0.5,1.02)}, anchor = south},
+]
+	\addplot [mark=none,color=TUMBlack, thick] coordinates { % C
+		(1,   8.32667)
+		(2,   14.31)
+		(4,   20.9377)
+		(8,   25.9783)
+		(16,  27.4429)
+		(32,  27.4423)
+		(64,  27.4457)
+		(128, 27.4389)
+		(256, 27.4417)
+	};
+	\addplot [mark=x,color=TUMDarkerBlue, thick] coordinates { % Rust
+		(1,   5.9)
+		(2,   10.6)
+		(4,   16.7)
+		(8,   23.4)
+		(16,  26.4)
+		(32,  27.6)
+		(64,  27.4)
+		(128, 27.4)
+		(256, 27.4)
+	};
+	\addplot [mark=triangle*,color=TUMGreen, thick] coordinates { % Go
+		(1,   3.3)
+		(2,   5.9)
+		(4,   9.8)
+		(8,   15.0)
+		(16,  19.0)
+		(32,  20.6)
+		(64,  23.5)
+		(128, 24.4)
+		(256, 24.8)
+	};
+	\addplot [mark=+,color=TUMOrange, thick] coordinates { % C#
+		(1,   2.5)
+		(2,   4.9)
+		(4,   9.0)
+		(8,   14.3)
+		(16,  19.0)
+		(32,  23.0)
+		(64,  25.6)
+		(128, 26.8)
+		(256, 27.0)
+	};
+	\addplot [mark=diamond*,color=TUMLightBlue, thick] coordinates { % java
+		(1,   5.10)
+		(2,   7.50)
+		(4,   10.00)
+		(8,   11.38)
+		(16,  11.62)
+		(32,  12.32)
+		(64,  12.62)
+		(128, 12.30)
+		(256, 12.66)
+	};
+	\addplot [mark=*,color=TUMYellow, thick] coordinates { % OCaml
+		(1,   1.63 * 2)
+		(2,   2.54 * 2)
+		(4,   4.00 * 2)
+		(8,   4.69 * 2)
+		(16,  5.49 * 2)
+		(32,  5.44 * 2)
+		(64,  6.15 * 2)
+		(128, 5.85 * 2)
+		(256, 5.68 * 2)
+	};
+	\addplot [mark=square*,color=TUMRed, thick] coordinates { % Haskell
+		(1,   1.99925 * 2)
+		(2,   2.74892 * 2)
+		(4,   3.55348 * 2)
+		(8,   4.19081 * 2)
+		(16,  4.60417 * 2)
+		(32,  4.7969  * 2)
+		(64,  4.97353 * 2)
+		(128, 5.00316 * 2)
+		(256, 4.9224  * 2)
+	};
+	\addplot [mark=triangle,color=TUMPurple, thick] coordinates { % Swift
+		(1,   1.7)
+		(2,   2.5)
+		(4,   3.5)
+		(8,   4.1)
+		(16,  4.6)
+		(32,  4.8)
+		(64,  5.0)
+		(128, 5.1)
+		(256, 5.1)
+	};
+	\addplot [mark=o,color=TUMDarkerGreen] coordinates { % JavaScript
+		(1,   1.053 * 2)
+		(2,   1.401 * 2)
+		(4,   1.837 * 2)
+		(8,   2.111 * 2)
+		(16,  2.237 * 2)
+		(32,  2.477 * 2)
+		(64,  2.273 * 2)
+		(128, 2.331 * 2)
+		(256, 2.432 * 2)
+	};
+	\addplot [mark=square,color=TUMIvony!50!black!70, thick] coordinates { % Python
+		(1,   0.04 * 2)
+		(2,   0.04 * 2)
+		(4,   0.05 * 2)
+		(8,   0.06 * 2)
+		(16,  0.07 * 2)
+		(32,  0.07 * 2)
+		(64,  0.07 * 2)
+		(128, 0.08 * 2)
+		(256, 0.08 * 2)
+	};
+\end{axis}
+\end{tikzpicture}
+\end{document}

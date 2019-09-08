@@ -1,0 +1,87 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{tumcolor}[2016/03/14 TUM colors]
+
+\newif\ifcmyk
+
+\DeclareOption{cmyk}{\cmyktrue}
+\DeclareOption{rgb}{\cmykfalse}
+
+\ExecuteOptions{cmyk}
+\ProcessOptions\relax
+
+
+\RequirePackage{xcolor}
+
+\ifcmyk
+
+% TUM primary colors
+\definecolor{TUMBlue}		{cmyk}{1.00,0.43,0.00,0.00}	% Pantone 300 C
+
+\definecolor{TUMWhite}		{cmyk}{0.00,0.00,0.00,0.00}	% White
+\definecolor{TUMBlack}		{cmyk}{0.00,0.00,0.00,1.00}	% Black
+
+% TUM secondary colors (can be used with 100%, 80%, 50% and 20%)
+\definecolor{TUMDarkerBlue}	{cmyk}{1.00,0.54,0.04,0.19}	% Pantone 301 C
+\definecolor{TUMDarkBlue}	{cmyk}{1.00,0.57,0.12,0.70}	% Pantone 540 C
+
+\definecolor{TUMDarkGray}	{cmyk}{0.00,0.00,0.00,0.80}	% 80% Black
+\definecolor{TUMMediumGray}	{cmyk}{0.00,0.00,0.00,0.50}	% 50% Black
+\definecolor{TUMLightGray}	{cmyk}{0.00,0.00,0.00,0.20}	% 20% Black
+
+% TUM highlight colors
+\definecolor{TUMIvony}		{cmyk}{0.03,0.04,0.14,0.08}	% Pantone 7527 C
+\definecolor{TUMOrange}		{cmyk}{0.00,0.65,0.95,0.00}	% Pantone 158 C
+\definecolor{TUMGreen}		{cmyk}{0.35,0.00,1.00,0.20}	% Pantone 383 C
+\definecolor{TUMLightBlue}	{cmyk}{0.42,0.09,0.00,0.00}	% Pantone 283 C
+\definecolor{TUMLighterBlue}	{cmyk}{0.65,0.19,0.01,0.04}	% Pantone 542 C
+
+% Additional TUM diagram colors
+\definecolor{TUMPurple}		{cmyk}{0.50,1.00,0.00,0.40}
+\definecolor{TUMDarkPurple}	{cmyk}{1.00,1.00,0.00,0.40}
+\definecolor{TUMTurquois}	{cmyk}{1.00,0.03,0.30,0.30}
+\definecolor{TUMDarkGreen}	{cmyk}{1.00,0.00,1.00,0.20}
+\definecolor{TUMDarkerGreen}	{cmyk}{0.60,0.00,1.00,0.20}
+\definecolor{TUMYellow}		{cmyk}{0.00,0.10,1.00,0.00}
+\definecolor{TUMDarkYellow}	{cmyk}{0.00,0.30,1.00,0.00}
+\definecolor{TUMLightRed}	{cmyk}{0.00,0.80,1.00,0.10}
+\definecolor{TUMRed}		{cmyk}{0.10,1.00,1.00,0.10}
+\definecolor{TUMDarkRed}	{cmyk}{0.00,1.00,1.00,0.40}
+
+\else
+
+% TUM primary colors
+\definecolor{TUMBlue}		{rgb}{0.00,0.40,0.74}	% Pantone 300 C
+
+\definecolor{TUMWhite}		{rgb}{1.00,1.00,1.00}	% White
+\definecolor{TUMBlack}		{rgb}{0.00,0.00,0.00}	% Black
+
+% TUM secondary colors (can be used with 100%, 80%, 50% and 20%)
+\definecolor{TUMDarkerBlue}	{rgb}{0.00,0.32,0.58}	% Pantone 301 C
+\definecolor{TUMDarkBlue}	{rgb}{0.00,0.20,0.35}	% Pantone 540 C
+
+\definecolor{TUMDarkGray}	{rgb}{0.20,0.20,0.20}	% 80% Black
+\definecolor{TUMMediumGray}	{rgb}{0.50,0.50,0.50}	% 50% Black
+\definecolor{TUMLightGray}	{rgb}{0.80,0.80,0.80}	% 20% Black
+
+% TUM highlight colors
+\definecolor{TUMIvony}		{rgb}{0.85,0.84,0.80}	% Pantone 7527 C
+\definecolor{TUMOrange}		{rgb}{0.89,0.45,0.13}	% Pantone 158 C
+\definecolor{TUMGreen}		{rgb}{0.64,0.68,0.00}	% Pantone 383 C
+\definecolor{TUMLightBlue}	{rgb}{0.60,0.78,0.92}	% Pantone 283 C
+\definecolor{TUMLighterBlue}	{rgb}{0.39,0.63,0.78}	% Pantone 542 C
+
+% Additional TUM diagram colors
+\definecolor{TUMPurple}		{rgb}{0.41,0.03,0.35}
+\definecolor{TUMDarkPurple}	{rgb}{0.06,0.11,0.37}
+\definecolor{TUMTurquois}	{rgb}{0.00,0.47,0.54}
+\definecolor{TUMDarkGreen}	{rgb}{0.00,0.49,0.19}
+\definecolor{TUMDarkerGreen}	{rgb}{0.40,0.60,0.11}
+\definecolor{TUMYellow}		{rgb}{1.00,0.86,0.00}
+\definecolor{TUMDarkYellow}	{rgb}{0.98,0.73,0.00}
+\definecolor{TUMLightRed}	{rgb}{0.84,0.30,0.07}
+\definecolor{TUMRed}		{rgb}{0.77,0.03,0.11}
+\definecolor{TUMDarkRed}	{rgb}{0.61,0.05,0.09}
+
+\fi
+
+\endinput
