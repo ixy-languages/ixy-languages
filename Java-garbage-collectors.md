@@ -1,4 +1,5 @@
-# Java Garbage Collector Comparison
+# Java garbage collector comparison
+Context: Check out the [README file](README.md) first. This is an adapted excerpt from our research paper ["The Case for Writing Network Drivers in High-Level Languages"](https://www.net.in.tum.de/fileadmin/bibtex/publications/papers/the-case-for-writing-network-drivers-in-high-level-languages.pdf) [[BibTeX](https://www.net.in.tum.de/publications/bibtex/highleveldrivers.bib)].
 
 OpenJDK 12 offers 7 different garbage collectors that all impact performance and latency in our driver in different ways.
 ixy.java tries to avoid allocations wherever possible, but it's virtually impossible to write allocation-free idiomatic Java code, so we still allocate around 20 bytes on average per forwarded packet.
