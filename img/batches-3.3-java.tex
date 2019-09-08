@@ -1,0 +1,138 @@
+\documentclass[convert]{standalone}
+ 
+\usepackage{tumcolors}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=newest}
+\pgfplotsset{grid style={dotted}}
+\usetikzlibrary{plotmarks}
+\usetikzlibrary{backgrounds} 
+
+\usepackage{sansmath} 
+\sansmath
+\renewcommand{\familydefault}{\sfdefault}
+
+\pgfplotsset{
+    empty/.style={
+        legend image code/.code={}
+    },
+}
+
+\begin{document}
+\begin{tikzpicture}[background rectangle/.style={fill=white},show background rectangle]
+
+\begin{axis}[
+	title={Java bidirectional forwarding performance at 3.3\,GHz},
+	width=10.2cm,
+	height=6.4cm,
+	xmode=log,
+	log basis x={2},
+	log ticks with fixed point,
+	xmin=0.75, xmax=384,
+	ymin=0, ymax=15,
+	grid=major,
+	xtick={1, 2, 4, 8, 16, 32, 64, 128, 256},
+	ytick={0,5,10,15},
+	ylabel=Packet rate {[}Mpps{]},
+	xlabel={Batch size},
+	legend style={font=\fontsize{7}{8}\selectfont},
+	every axis legend/.append style={nodes={right}},
+	legend pos = south east,
+	legend columns = 2,
+]
+	\addplot [mark=+,color=TUMOrange, thick]  coordinates {
+		(1,   5.12 )
+		(2,   7.46 )
+		(4,   9.82 )
+		(8,   11.38)
+		(16,  11.64)
+		(32,  12.33)
+		(64,  12.68)
+		(128, 12.34)
+		(256, 12.57)
+	};
+	\addlegendentry{CMS}
+
+	\addplot [mark=x,color=TUMDarkerBlue, thick]  coordinates {
+		(1,   5.12 )
+		(2,   7.52 )
+		(4,   9.96 )
+		(8,   11.38)
+		(16,  11.70)
+		(32,  12.35)
+		(64,  12.37)
+		(128, 12.38)
+		(256, 12.42)
+	};
+	\addlegendentry{Serial}
+
+	\addplot [mark=triangle*,color=TUMGreen, thick]  coordinates {
+		(1,   5.10 )
+		(2,   7.50 )
+		(4,   10.00)
+		(8,   11.38)
+		(16,  11.62)
+		(32,  12.32)
+		(64,  12.62)
+		(128, 12.30)
+		(256, 12.66)
+	};
+	\addlegendentry{Parallel}
+
+	\addplot [mark=diamond*,color=TUMYellow, thick]  coordinates {
+		(1,   4.38)
+		(2,   6.10)
+		(4,   7.78)
+		(8,   8.68)
+		(16,  8.96)
+		(32,  9.32)
+		(64,  9.48)
+		(128, 9.52)
+		(256, 9.70)
+	};
+	\addlegendentry{G1}
+
+	\addplot [mark=square*,color=TUMPurple, thick]  coordinates {
+		(1,   4.68 )
+		(2,   7.14 )
+		(4,   9.36 )
+		(8,   10.74)
+		(16,  10.88)
+		(32,  11.47)
+		(64,  11.90)
+		(128, 11.44)
+		(256, 11.57)
+	};
+	\addlegendentry{ZGC}
+
+	\addplot [mark=*,color=TUMRed, thick] coordinates {
+		(1,   4.58 )
+		(2,   6.50 )
+		(4,   8.52 )
+		(8,   9.68 )
+		(16,  10.02)
+		(32,  10.78)
+		(64,  10.94)
+		(128, 11.06)
+		(256, 11.18)
+	};
+	\addlegendentry{Shenandoah}
+
+	\addplot [mark=square,color=TUMIvony!50!black!70, thick]  coordinates {
+		(1,   5.10 )
+		(2,   7.52 )
+		(4,   9.94 )
+		(8,   11.31)
+		(16,  11.67)
+		(32,  12.18)
+		(64,  12.62)
+		(128, 12.72)
+		(256, 12.66)
+	};
+	\addlegendentry{Epsilon}
+
+	\addlegendimage{empty}
+	\addlegendentry{\hspace{-0.85cm} (no-op)} % lol
+\end{axis}
+\end{tikzpicture}
+\end{document}

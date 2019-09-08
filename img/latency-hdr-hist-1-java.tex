@@ -1,0 +1,56 @@
+\documentclass[convert]{standalone}
+ 
+\usepackage{tumcolors}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=newest}
+\pgfplotsset{grid style={dotted}}
+\usetikzlibrary{plotmarks}
+\usetikzlibrary{backgrounds} 
+
+\usepackage{sansmath} 
+\sansmath
+\renewcommand{\familydefault}{\sfdefault}
+
+\pgfplotsset{
+    empty/.style={
+        legend image code/.code={}
+    },
+}
+
+\begin{document}
+\begin{tikzpicture}[background rectangle/.style={fill=white},show background rectangle]
+\begin{axis}[
+	title={Latency when forwarding 1\,Mpps},
+	width=12cm,
+	height=8cm,
+	x dir=reverse,
+	xmode=log,
+	xmin=0.0000002, xmax=1,
+	ymin=0, ymax=1700,
+	grid=major,
+	xlabel={Percentile},
+	xtick={1, 0.1, 0.01, 0.001, 0.0001, 0.00001, 0.000001, 0.0000002},
+	minor xtick={.9, .8, .7, .6, .5, .4, .3, .2, .09, .08, .07, .06, .05, .04, .03, .02, .009, .008, .007, .006, .005, .004, .003, .002, .0009, .0008, .0007, .0006, .0005, .0004, .0003, .0002, .00009, .00008, .00007, .00006, .00005, .00004, .00003, .00002, .000009, .000008, .000007, .000006, .000005, .000004, .000003, .000002},
+	xticklabels={0, 90, 99, 99.9, 99.99, 99.999, {}, Max},
+	legend style={font=\fontsize{7}{8}\selectfont},
+	ylabel={Latency [$\mu$s]},
+	every axis legend/.append style={nodes={right}},
+	legend style={at={(0.01,0.99)}, anchor = north west},
+	legend columns = 3,
+]
+% 100th percentile in the CDF has been manually replaced with 99.99999ths percentile which has the "Max" label in the graph; so yes, this graph shows the actual maximum even if the CSVs/code here doesn't look like it does
+\addplot [mark=none,color=TUMOrange, thick] table[col sep=comma,y=lat,x expr=1-\thisrow{cdf}] {data/latency-1/java-cms-cdf.csv}; \addlegendentry{CMS}
+\addplot [mark=none,color=TUMDarkerBlue, thick] table[col sep=comma,y=lat,x expr=1-\thisrow{cdf}] {data/latency-1/java-serial-cdf.csv}; \addlegendentry{Serial}
+\addplot [mark=none,color=TUMGreen, thick] table[col sep=comma,y=lat,x expr=1-\thisrow{cdf}] {data/latency-1/java-parallel-cdf.csv}; \addlegendentry{Parallel}
+\addplot [mark=none,color=TUMYellow, thick] table[col sep=comma,y=lat,x expr=1-\thisrow{cdf}] {data/latency-1/java-g1-cdf.csv}; \addlegendentry{G1}
+\addplot [mark=none,color=TUMPurple, thick] table[col sep=comma,y=lat,x expr=1-\thisrow{cdf}] {data/latency-1/java-zgc-cdf.csv}; \addlegendentry{ZGC}
+\addplot [mark=none,color=TUMRed, thick] table[col sep=comma,y=lat,x expr=1-\thisrow{cdf}] {data/latency-1/java-shenandoah-cdf.csv}; \addlegendentry{Shenandoah}
+\addplot [mark=none,color=TUMIvony!50!black!70, thick] table[col sep=comma,y=lat,x expr=1-\thisrow{cdf}] {data/latency-1/java-epsilon-cdf.csv}; \addlegendentry{Epsilon}
+
+\addlegendimage{empty}
+\addlegendentry{\hspace{-0.85cm} (no-op)} % lol
+
+\end{axis}
+\end{tikzpicture}
+\end{document}
