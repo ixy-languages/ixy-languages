@@ -35,7 +35,7 @@ This table shows relevant performance counters divided by forwarding speed, i.e.
 Wow, looks like we should really be asking how Rust manages to be so fast! The CPU executes 65% more instructions per forwarded packet with the Rust driver compared to C.
 But it manages to do so with only 6% (11%) more cycles per packet for batch size 32 (batch size 8).
 
-Modern superscalar out-of-order CPUs (this was run on an Intel Xeon E5-2620 v3) are really good at hiding these safety checks. The C code just didn't use the CPU to it's full potential.
+Modern superscalar out-of-order CPUs (this was run on an Intel Xeon E3-1230 v3) are really good at hiding these safety checks. The C code just didn't use the CPU to it's full potential.
 Our driver does not violate any bounds checks during normal execution, the processor is therefore able to correctly predict (branch mispredict rate is at 0.2% - 0.3%) and speculatively execute the correct path.
 Caches also help with the additional required loads of bounds information: this workload achieves an L1 cache hit rate of > 98%.
 
