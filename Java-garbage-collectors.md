@@ -6,14 +6,24 @@ ixy.java tries to avoid allocations wherever possible, but it's virtually imposs
 
 ![Performance with different garbage collectors, CPU at 3.3 GHz](img/batches-3.3-java.png)
 
-Epsilon, a garbage collector that never frees memory, is the fastest but it also crashes after a few minutes as it runs out of memory. The new Shenandoah collector doesn't do too well, unfortunately.
+Epsilon, a garbage collector that never frees memory, is the fastest but it also crashes after a few minutes as it runs out of memory. The new Shenandoah collector doesn't do too well, unfortunately, but that should be fixed with OpenJDK 13.
 Some GCs are as fast as the no-op implementation, this is because never freeing memory isn't ideal either: leaking memory leads to poor data locality as the heap fills up.
 
 But throughput isn't everything, let's look at the latency.
 
 ![Performance with different garbage collectors, CPU at 3.3 GHz](img/latency-hdr-hist-1-java.png)
 
-That's... not great. Go and C# managed to keep tail latency below 100µs, see [language comparison](README.md). Even Epsilon is quite slow, so there's something else going on, probably the JIT compiler.
-These tests already show the steady state by excluding the first 5 seconds because Java drops packets and shows excessive latencies during startup.
+Shenandoah seems to be a pretty good low-latency GC. It's even faster than not freeing memory at all with Epsilon: leaking memory has bad data locality so you run into all sorts of additional latency sources like TLB misses.
 
-The best garbage collectors for drivers written in Java seem to be ZGC and Parallel with the best trade-offs between performance and latency.
+## Notes
+
+Latency measurements are hard:
+
+* These tests show the steady state by excluding the first 5 seconds because Java drops packets and shows excessive latencies during startup (milliseconds)
+* We disabled printing statistics in the driver for Epsilon, ZGC and Shenandoah, this reduced latency from ~300 µs to ~45 µs for Shenandoah and Epsilon
+* Other GCs perform *worse* when not printing statistics, so we kept that enabled for the other GCs
+
+## What's the best GC?
+
+Probably ZGC at the moment for a good trade-off between performance and latency.
+But OpenJDK 13 should improve Shenandoah, we'll update this page as soon as we can get ixy.java running on OpenJDK 13 (blocked on unsupported dependencies).
