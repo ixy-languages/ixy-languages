@@ -49,7 +49,7 @@ Total branch mispredictions are unaffected, i.e., the  branch check is always pr
 
 ## Rust without safety checks
 
-We can use [C2Rrust](https://github.com/immunant/c2rust) to transpile our C code to Rust, yielding a completely unsafe Rust implementation that features barely any safety checks. The resulting transpiled code forwards a packet in only 91 cycles while executing 121 instructions, that's faster than the original code. It holds true even when the original code is compiled with clang and the same LLVM version.
+We can use [C2Rust](https://github.com/immunant/c2rust) to transpile our C code to Rust, yielding a completely unsafe Rust implementation that features barely any safety checks. The resulting transpiled code forwards a packet in only 91 cycles while executing 121 instructions, that's faster than the original code. It holds true even when the original code is compiled with clang and the same LLVM version.
 
 Well, there you have it: **Rust is faster than C!** (unless you want safety)
 
